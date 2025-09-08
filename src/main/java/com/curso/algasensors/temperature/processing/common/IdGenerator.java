@@ -1,4 +1,4 @@
-package com.curso.algasensors.temperature.processing.utils;
+package com.curso.algasensors.temperature.processing.common;
 
 import com.fasterxml.uuid.Generators;
 import com.fasterxml.uuid.impl.TimeBasedEpochRandomGenerator;

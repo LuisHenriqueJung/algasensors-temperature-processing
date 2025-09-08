@@ -3,8 +3,8 @@ import java.time.OffsetDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.UUID;
 
-import com.curso.algasensors.temperature.processing.utils.IdGenerator;
-import com.curso.algasensors.temperature.processing.utils.UUIDv7Utils;
+import com.curso.algasensors.temperature.processing.common.IdGenerator;
+import com.curso.algasensors.temperature.processing.common.UUIDv7Utils;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 

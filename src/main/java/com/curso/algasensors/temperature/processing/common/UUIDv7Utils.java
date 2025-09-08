@@ -1,4 +1,4 @@
-package com.curso.algasensors.temperature.processing.utils;
+package com.curso.algasensors.temperature.processing.common;
 
 import java.time.Instant;
 import java.time.OffsetDateTime;
