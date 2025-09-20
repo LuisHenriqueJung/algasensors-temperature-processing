@@ -11,7 +11,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.time.OffsetDateTime;
 
 @RestController
-@RequestMapping("/api/v1/sensors/{sensorId}/temperatures/data")
+@RequestMapping("/api/sensors/{sensorId}/temperatures/data")
 public class TemperatureProcessingController {
 
     @PostMapping(consumes = MediaType.TEXT_PLAIN_VALUE)
