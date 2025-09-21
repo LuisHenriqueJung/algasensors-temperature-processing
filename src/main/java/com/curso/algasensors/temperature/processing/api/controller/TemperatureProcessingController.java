@@ -1,6 +1,6 @@
 package com.curso.algasensors.temperature.processing.api.controller;
 
-import com.curso.algasensors.temperature.processing.api.model.TemperatureLogOutput;
+import com.curso.algasensors.temperature.processing.api.model.TemperatureLogData;
 import com.curso.algasensors.temperature.processing.common.IdGenerator;
 import io.hypersistence.tsid.TSID;
 import lombok.RequiredArgsConstructor;
@@ -31,11 +31,11 @@ public class TemperatureProcessingController {
         } catch (NumberFormatException e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
-        TemperatureLogOutput temperatureLog = TemperatureLogOutput.builder()
+        TemperatureLogData temperatureLog = TemperatureLogData.builder()
                 .id(IdGenerator.generateTimeBasedUUID())
                 .sensorId(sensorId)
-                .registredAt(OffsetDateTime.now())
-                .temperature(temperature)
+                .registeredAt(OffsetDateTime.now())
+                .value(temperature)
                 .build();
         MessagePostProcessor messagePostProcessor = message -> {
             message.getMessageProperties().setHeader("sensorId",temperatureLog.getSensorId().toString());
