@@ -4,6 +4,7 @@ import com.curso.algasensors.temperature.processing.api.model.TemperatureLogOutp
 import com.curso.algasensors.temperature.processing.common.IdGenerator;
 import io.hypersistence.tsid.TSID;
 import lombok.RequiredArgsConstructor;
+import org.springframework.amqp.core.MessagePostProcessor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -36,10 +37,14 @@ public class TemperatureProcessingController {
                 .registredAt(OffsetDateTime.now())
                 .temperature(temperature)
                 .build();
-
+        MessagePostProcessor messagePostProcessor = message -> {
+            message.getMessageProperties().setHeader("sensorId",temperatureLog.getSensorId().toString());
+            return message;
+        };
         rabbitTemplate.convertAndSend(
                 EXCHANGE_NAME
                 ,"",
-                temperatureLog);
+                temperatureLog,
+                messagePostProcessor);
     }
 }
